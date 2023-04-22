@@ -1,4 +1,5 @@
 [![.NET](https://github.com/hmathieu-insat/blazor-workshop/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmathieu-insat/blazor-workshop/actions/workflows/dotnet.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hmathieu-insat_blazor-workshop&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hmathieu-insat_blazor-workshop)
 
 # Blazor - app building workshop
 
