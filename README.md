@@ -1,3 +1,5 @@
+[![.NET](https://github.com/hmathieu-insat/blazor-workshop/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmathieu-insat/blazor-workshop/actions/workflows/dotnet.yml)
+
 # Blazor - app building workshop
 
 Welcome to the Blazor app building workshop! 
