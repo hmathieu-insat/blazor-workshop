@@ -1,3 +1,10 @@
 ﻿@page "/"
+@inject HttpClient Http
 
-<h1>Blazing Pizzas</h1>
+<h1>Blazing Pizzas</h1>    List<PizzaSpecial> _specials;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _specials = await Http.GetFromJsonAsync<List<PizzaSpecial>>("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
+    }
+}
