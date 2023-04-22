@@ -22,7 +22,7 @@ public partial class Index
         _showingConfigureDialog = true;
     }
 
-    protected async override Task OnInitializedAsync() => 
+    protected async override Task OnInitializedAsync() =>
         _specials = await HttpClient.GetFromJsonAsync("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
 
     private void CancelConfigurePizzaDialog()
