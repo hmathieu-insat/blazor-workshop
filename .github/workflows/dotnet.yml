@@ -59,7 +59,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"hmathieu-insat_blazor-workshop" /o:"hmathieu" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          <insert_your_build_command>
+          dotnet build --no-restore
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
       - name: Test
         run: dotnet test --no-build --verbosity normal
