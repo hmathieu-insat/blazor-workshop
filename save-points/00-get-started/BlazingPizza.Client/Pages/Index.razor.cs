@@ -4,7 +4,7 @@ namespace BlazingPizza.Client.Pages;
 
 public partial class Index
 {
-    private List<PizzaSpecial> specials;
+    private List<PizzaSpecial> _specials;
     private Pizza _configuringPizza;
     private bool _showingConfigureDialog;
     private Order order = new Order();
@@ -23,7 +23,7 @@ public partial class Index
     }
 
     protected async override Task OnInitializedAsync() => 
-        specials = await HttpClient.GetFromJsonAsync("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
+        _specials = await HttpClient.GetFromJsonAsync("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
 
     private void CancelConfigurePizzaDialog()
     {
