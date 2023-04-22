@@ -20,7 +20,38 @@
     </ul>
 </div>
 
-<ConfigurePizzaDialog Show="_showingConfigureDialog"
-                      Pizza="_configuringPizza"
-                      OnCancel="CancelConfigurePizzaDialog"
-                      OnConfirm="ConfirmConfigurePizzaDialog" />
+<div class="sidebar">
+    @if (_order.Pizzas.Any())
+    {
+        <div class="order-contents">
+            <h2>Your order</h2>
+
+            @foreach (var configuredPizza in _order.Pizzas)
+            {
+                <ConfiguredPizzaItem OnRemoved="@(() => RemoveConfiguredPizza(configuredPizza))"
+                                     Pizza="configuredPizza" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="empty-cart">Choose a pizza to get started</div>
+    }
+
+    <div class="order-total @(_order.Pizzas.Any() ? "" : "hidden")">
+        Total:
+        <span class="total-price">@_order.GetFormattedTotalPrice()</span>
+        <button class="btn btn-warning" disabled="@(!_order.Pizzas.Any())" @onclick="PlaceOrder">
+            Order
+        </button>
+    </div>
+
+</div>
+
+@if (_showingConfigureDialog)
+{
+    <ConfigurePizzaDialog Show="_showingConfigureDialog"
+                          Pizza="_configuringPizza"
+                          OnCancel="CancelConfigurePizzaDialog"
+                          OnConfirm="ConfirmConfigurePizzaDialog" />
+}

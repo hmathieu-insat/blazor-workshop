@@ -7,7 +7,7 @@ public partial class Index
     private List<PizzaSpecial> _specials;
     private Pizza _configuringPizza;
     private bool _showingConfigureDialog;
-    private Order order = new Order();
+    private Order _order = new();
 
     private void ShowConfigurePizzaDialog(PizzaSpecial special)
     {
@@ -33,9 +33,20 @@ public partial class Index
 
     private void ConfirmConfigurePizzaDialog()
     {
-        order.Pizzas.Add(_configuringPizza);
+        _order.Pizzas.Add(_configuringPizza);
         _configuringPizza = null;
 
         _showingConfigureDialog = false;
+    }
+
+    private void RemoveConfiguredPizza(Pizza pizza)
+    {
+        _order.Pizzas.Remove(pizza);
+    }
+
+    private async Task PlaceOrder()
+    {
+        await HttpClient.PostAsJsonAsync("orders", _order);
+        _order = new();
     }
 }
