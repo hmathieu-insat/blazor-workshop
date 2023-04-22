@@ -34,8 +34,6 @@ public partial class ConfigurePizzaDialog
             Pizza.Toppings.Add(new PizzaTopping { Topping = topping });
     }
 
-    private void RemoveTopping(Topping topping)
-    {
-        Pizza.Toppings.RemoveAll(pt => pt.Topping.Id == topping.Id);
-    }
+    private void RemoveTopping(Topping topping) 
+        => Pizza.Toppings.RemoveAll(pt => pt.Topping.Id == topping.Id);
 }

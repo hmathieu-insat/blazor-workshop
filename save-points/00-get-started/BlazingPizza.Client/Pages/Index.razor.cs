@@ -5,13 +5,13 @@ namespace BlazingPizza.Client.Pages;
 public partial class Index
 {
     private List<PizzaSpecial> specials;
-    private Pizza configuringPizza;
-    private bool showingConfigureDialog;
+    private Pizza _configuringPizza;
+    private bool _showingConfigureDialog;
     private Order order = new Order();
 
     private void ShowConfigurePizzaDialog(PizzaSpecial special)
     {
-        configuringPizza = new Pizza()
+        _configuringPizza = new Pizza()
         {
             Special = special,
             SpecialId = special.Id,
@@ -19,13 +19,23 @@ public partial class Index
             Toppings = new List<PizzaTopping>(),
         };
 
-        showingConfigureDialog = true;
+        _showingConfigureDialog = true;
     }
 
-    protected async override Task OnInitializedAsync()
+    protected async override Task OnInitializedAsync() => 
+        specials = await HttpClient.GetFromJsonAsync("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
+
+    private void CancelConfigurePizzaDialog()
     {
-        specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>("specials", BlazingPizza.OrderContext.Default.ListPizzaSpecial);
+        _configuringPizza = null;
+        _showingConfigureDialog = false;
     }
 
+    private void ConfirmConfigurePizzaDialog()
+    {
+        order.Pizzas.Add(_configuringPizza);
+        _configuringPizza = null;
 
+        _showingConfigureDialog = false;
+    }
 }
