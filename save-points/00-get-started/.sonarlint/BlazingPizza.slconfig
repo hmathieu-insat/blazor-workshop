@@ -1,0 +1,27 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "hmathieu",
+    "Name": "Hugo Mathieu"
+  },
+  "ProjectKey": "hmathieu-insat_blazor-workshop",
+  "ProjectName": "blazor-workshop",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AYdJNOUXHElsxRIT4Z2v",
+      "ProfileTimestamp": "2023-04-20T10:52:15Z"
+    },
+    "Secrets": {
+      "ProfileKey": "AYdJNOUXHElsxRIT4Z2d",
+      "ProfileTimestamp": "2023-01-25T09:40:14Z"
+    },
+    "Js": {
+      "ProfileKey": "AYdJNOUXHElsxRIT4Z2y",
+      "ProfileTimestamp": "2023-03-30T08:39:13Z"
+    },
+    "Ts": {
+      "ProfileKey": "AYdJNOUXHElsxRIT4Z22",
+      "ProfileTimestamp": "2023-03-30T08:47:48Z"
+    }
+  }
+}

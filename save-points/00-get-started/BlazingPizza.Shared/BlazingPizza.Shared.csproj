@@ -4,7 +4,12 @@
     <TargetFramework>$(TargetFrameworkVersion)</TargetFramework>
     <RootNamespace>BlazingPizza</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
+		<CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\hmathieu-insat_blazor-workshop\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<Using Include="System.ComponentModel.DataAnnotations" />
