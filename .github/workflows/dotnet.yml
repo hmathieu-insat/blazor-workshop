@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: save-points/00-get-started
+        working-directory: src
     
 
     steps:
