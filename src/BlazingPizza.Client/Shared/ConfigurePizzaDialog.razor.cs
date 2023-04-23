@@ -25,15 +25,15 @@ public partial class ConfigurePizzaDialog
     private void ToppingSelected(ChangeEventArgs e)
     {
         if (int.TryParse((string)e.Value, out var index) && index >= 0)
-            AddTopping(_toppings[index]);
+            AddTopping(_toppings.FirstOrDefault(tp => tp.Id == index));
     }
 
     private void AddTopping(Topping topping)
     {
-        if (!Pizza.Toppings.Exists(pt => pt.ToppingId == topping.Id))
+        if (!Pizza.Toppings.Exists(pt => pt.Topping == topping))
             Pizza.Toppings.Add(new PizzaTopping { Topping = topping });
     }
 
     private void RemoveTopping(Topping topping) 
-        => Pizza.Toppings.RemoveAll(pt => pt.Topping.Id == topping.Id);
+        => Pizza.Toppings.RemoveAll(pt => pt.Topping == topping);
 }
