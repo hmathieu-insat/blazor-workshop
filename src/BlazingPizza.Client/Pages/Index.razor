@@ -36,17 +36,18 @@
     }
     else
     {
-        <div class="empty-cart">Choose a pizza to get started</div>
+        <div class="empty-cart">Choose a pizza to get tourted</div>
     }
 
     <div class="order-total @(OrderState.Order.Pizzas.Any() ? "" : "hidden")">
         Total:
         <span class="total-price">@OrderState.Order.GetFormattedTotalPrice()</span>
-        <button class="btn btn-warning" disabled="@(!OrderState.Order.Pizzas.Any())" @onclick="PlaceOrderAsync">
-            Order
-        </button>
+        <a href="checkout" class="@(OrderState.Order.Pizzas.Count == 0
+           ? "btn btn-warning disabled"
+           : "btn btn-warning")">
+            Checkout
+        </a>
     </div>
-
 </div>
 
 @if (OrderState.ShowingConfigureDialog)
