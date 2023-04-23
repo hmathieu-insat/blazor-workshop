@@ -4,6 +4,9 @@ namespace BlazingPizza.Client.Pages;
 
 public partial class Checkout
 {
+    /// <summary>
+    /// Places the order asynchronous.
+    /// </summary>
     async Task PlaceOrderAsync()
     {
         var response = await Http.PostAsJsonAsync("orders", OrderState.Order);
