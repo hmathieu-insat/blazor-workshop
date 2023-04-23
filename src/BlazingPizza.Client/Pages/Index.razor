@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject HttpClient HttpClient
+@inject OrderState OrderState
 @inject NavigationManager NavigationManager
 
 <div class="main">
@@ -8,7 +9,7 @@
         {
             @foreach (var special in _specials)
             {
-                <li @onclick="@(() => ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')">
+                <li @onclick="@(() => OrderState.ShowConfigurePizzaDialog(special))" style="background-image: url('@special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@special.Name</span>
                         @special.Description
@@ -21,14 +22,14 @@
 </div>
 
 <div class="sidebar">
-    @if (_order.Pizzas.Any())
+    @if (OrderState.Order.Pizzas.Any())
     {
         <div class="order-contents">
             <h2>Your order</h2>
 
-            @foreach (var configuredPizza in _order.Pizzas)
+            @foreach (var configuredPizza in OrderState.Order.Pizzas)
             {
-                <ConfiguredPizzaItem OnRemoved="@(() => RemoveConfiguredPizza(configuredPizza))"
+                <ConfiguredPizzaItem OnRemoved="@(() => OrderState.RemoveConfiguredPizza(configuredPizza))"
                                      Pizza="configuredPizza" />
             }
         </div>
@@ -38,20 +39,20 @@
         <div class="empty-cart">Choose a pizza to get started</div>
     }
 
-    <div class="order-total @(_order.Pizzas.Any() ? "" : "hidden")">
+    <div class="order-total @(OrderState.Order.Pizzas.Any() ? "" : "hidden")">
         Total:
-        <span class="total-price">@_order.GetFormattedTotalPrice()</span>
-        <button class="btn btn-warning" disabled="@(!_order.Pizzas.Any())" @onclick="PlaceOrderAsync">
+        <span class="total-price">@OrderState.Order.GetFormattedTotalPrice()</span>
+        <button class="btn btn-warning" disabled="@(!OrderState.Order.Pizzas.Any())" @onclick="PlaceOrderAsync">
             Order
         </button>
     </div>
 
 </div>
 
-@if (_showingConfigureDialog)
+@if (OrderState.ShowingConfigureDialog)
 {
-    <ConfigurePizzaDialog Show="_showingConfigureDialog"
-                          Pizza="_configuringPizza"
-                          OnCancel="CancelConfigurePizzaDialog"
-                          OnConfirm="ConfirmConfigurePizzaDialog" />
+    <ConfigurePizzaDialog Show="OrderState.ShowingConfigureDialog"
+                          Pizza="OrderState.ConfiguringPizza"
+                          OnCancel="OrderState.CancelConfigurePizzaDialog"
+                          OnConfirm="OrderState.ConfirmConfigurePizzaDialog" />
 }
