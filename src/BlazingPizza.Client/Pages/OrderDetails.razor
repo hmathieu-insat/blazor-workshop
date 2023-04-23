@@ -1,0 +1,29 @@
+﻿@page "/myorders/{OrderId:int}"
+@using System.Threading
+@inject HttpClient Http
+@inject ILogger<OrderDetails> Logger
+
+<div class="main">
+    @if (_isOrderInvalid)
+    {
+        <h2>Nope</h2>
+        <p>Sorry, could not load this order</p>
+    }
+    else if (_orderWithStatus is null)
+    {
+        <text>Loading...</text>
+    }
+    else
+    {
+        <div class="track-order">
+            <div class="track-order-title">
+                <h2>
+                    Order placed @_orderWithStatus.Order.CreatedTime.ToLongDateString()
+                </h2>
+                <p class="track-order-body"> 
+                    TODO: more details
+                </p>
+            </div>
+        </div>
+    }
+</div>

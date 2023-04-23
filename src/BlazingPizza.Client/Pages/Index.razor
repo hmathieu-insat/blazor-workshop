@@ -41,7 +41,7 @@
     <div class="order-total @(_order.Pizzas.Any() ? "" : "hidden")">
         Total:
         <span class="total-price">@_order.GetFormattedTotalPrice()</span>
-        <button class="btn btn-warning" disabled="@(!_order.Pizzas.Any())" @onclick="PlaceOrder">
+        <button class="btn btn-warning" disabled="@(!_order.Pizzas.Any())" @onclick="PlaceOrderAsync">
             Order
         </button>
     </div>

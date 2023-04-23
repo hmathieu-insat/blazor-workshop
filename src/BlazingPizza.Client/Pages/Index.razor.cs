@@ -4,8 +4,8 @@ namespace BlazingPizza.Client.Pages;
 
 public partial class Index
 {
-    private List<PizzaSpecial> _specials;
-    private Pizza _configuringPizza;
+    private List<PizzaSpecial>? _specials;
+    private Pizza? _configuringPizza;
     private bool _showingConfigureDialog;
     private Order _order = new();
 
@@ -33,8 +33,11 @@ public partial class Index
 
     private void ConfirmConfigurePizzaDialog()
     {
-        _order.Pizzas.Add(_configuringPizza);
-        _configuringPizza = null;
+        if (_configuringPizza is not null)
+        {
+            _order.Pizzas.Add(_configuringPizza);
+            _configuringPizza = null;
+        }
 
         _showingConfigureDialog = false;
     }
@@ -44,9 +47,10 @@ public partial class Index
         _order.Pizzas.Remove(pizza);
     }
 
-    private async Task PlaceOrder()
+    private async Task PlaceOrderAsync()
     {
         await HttpClient.PostAsJsonAsync("orders", _order);
+
         _order = new();
     }
 }

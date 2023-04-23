@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BlazingPizza.Client.Pages;
 public partial class MyOrders
 {
-    IEnumerable<OrderWithStatus> _ordersWithStatus;
+    IEnumerable<OrderWithStatus>? _ordersWithStatus;
 
     protected override async Task OnParametersSetAsync()
     {
