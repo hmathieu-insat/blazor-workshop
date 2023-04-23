@@ -5,7 +5,6 @@
     <RootNamespace>BlazingPizza</RootNamespace>
 		<ImplicitUsings>true</ImplicitUsings>
 		<CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
-		<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
