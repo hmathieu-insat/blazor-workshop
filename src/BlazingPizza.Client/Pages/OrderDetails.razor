@@ -1,16 +1,18 @@
-﻿@page "/myorders/{OrderId:int}"
+﻿@page "/myorders/{orderId:int}"
 @using System.Threading
 @inject HttpClient Http
-@implements IDisposable
 @inject ILogger<OrderDetails> Logger
+@implements IDisposable
+
+<PageTitle>Blazing Pizza - Order Details</PageTitle>
 
 <div class="main">
     @if (_isOrderInvalid)
     {
         <h2>Nope</h2>
-        <p>Sorry, could not load this order</p>
+        <p>Sorry, this order could not be loaded.</p>
     }
-    else if (_orderWithStatus is null)
+    else if (_orderWithStatus == null)
     {
         <text>Loading...</text>
     }

@@ -29,31 +29,28 @@
 
             @foreach (var configuredPizza in OrderState.Order.Pizzas)
             {
-                <ConfiguredPizzaItem OnRemoved="@(() => OrderState.RemoveConfiguredPizza(configuredPizza))"
-                                     Pizza="configuredPizza" />
+                <ConfiguredPizzaItem Pizza="configuredPizza" OnRemoved="@(() => OrderState.RemoveConfiguredPizza(configuredPizza))" />
             }
         </div>
     }
     else
     {
-        <div class="empty-cart">Choose a pizza to get tourted</div>
+        <div class="empty-cart">Choose a pizza<br>to get started</div>
     }
 
     <div class="order-total @(OrderState.Order.Pizzas.Any() ? "" : "hidden")">
         Total:
         <span class="total-price">@OrderState.Order.GetFormattedTotalPrice()</span>
-        <a href="checkout" class="@(OrderState.Order.Pizzas.Count == 0
-           ? "btn btn-warning disabled"
-           : "btn btn-warning")">
-            Checkout
+        <a href="checkout" class="@(OrderState.Order.Pizzas.Count == 0 ? "btn btn-warning disabled" : "btn btn-warning")">
+            Order >
         </a>
     </div>
 </div>
 
 @if (OrderState.ShowingConfigureDialog)
 {
-    <ConfigurePizzaDialog Show="OrderState.ShowingConfigureDialog"
-                          Pizza="OrderState.ConfiguringPizza"
-                          OnCancel="OrderState.CancelConfigurePizzaDialog"
-                          OnConfirm="OrderState.ConfirmConfigurePizzaDialog" />
+    <ConfigurePizzaDialog
+        Pizza="OrderState.ConfiguringPizza"
+        OnCancel="OrderState.CancelConfigurePizzaDialog"
+        OnConfirm="OrderState.ConfirmConfigurePizzaDialog" />
 }

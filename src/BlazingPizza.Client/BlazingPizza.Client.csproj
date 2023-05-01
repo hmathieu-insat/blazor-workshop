@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>$(TargetFrameworkVersion)</TargetFramework>
-    <ImplicitUsings>true</ImplicitUsings>
-    <CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
-    <Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
+		<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +13,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(BlazorVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(BlazorVersion)" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(BlazorVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="$(AspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(SystemNetHttpJsonVersion)" />
     <PackageReference Include="System.Net.Http.Json" Version="$(SystemNetHttpJsonVersion)" />
   </ItemGroup>
 
@@ -22,5 +23,5 @@
     <ProjectReference Include="..\BlazingPizza.ComponentsLibrary\BlazingPizza.ComponentsLibrary.csproj" />
     <ProjectReference Include="..\BlazingPizza.Shared\BlazingPizza.Shared.csproj" />
   </ItemGroup>
-  
+
 </Project>

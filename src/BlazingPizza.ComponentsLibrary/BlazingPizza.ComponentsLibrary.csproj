@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>$(TargetFrameworkVersion)</TargetFramework>
-    <ImplicitUsings>true</ImplicitUsings>
-    <CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
+		<ImplicitUsings>true</ImplicitUsings>
+		<CodeAnalysisRuleSet>..\.sonarlint\hmathieu-insat_blazor-workshopcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

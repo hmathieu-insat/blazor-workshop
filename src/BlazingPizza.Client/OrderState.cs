@@ -6,7 +6,7 @@ public class OrderState
 
     public Pizza? ConfiguringPizza { get; private set; }
 
-    public Order Order { get; private set; } = new();
+    public Order Order { get; private set; } = new Order();
 
     /// <summary>
     /// Shows the configure pizza dialog.
@@ -16,11 +16,12 @@ public class OrderState
     {
         ConfiguringPizza = new Pizza()
         {
-            Special = pizzaSpecial,
-            SpecialId = pizzaSpecial.Id,
+            Special = special,
+            SpecialId = special.Id,
             Size = Pizza.DefaultSize,
             Toppings = new List<PizzaTopping>(),
         };
+
         ShowingConfigureDialog = true;
     }
 
@@ -36,11 +37,9 @@ public class OrderState
     /// <summary>Confirms the configure pizza dialog.</summary>
     public void ConfirmConfigurePizzaDialog()
     {
-        if (ConfiguringPizza is not null)
-        {
-            Order.Pizzas.Add(ConfiguringPizza);
-            ConfiguringPizza = null;
-        }
+        Order.Pizzas.Add(ConfiguringPizza);
+        ConfiguringPizza = null;
+
         ShowingConfigureDialog = false;
     }
 
@@ -56,6 +55,11 @@ public class OrderState
     /// </summary>
     public void ResetOrder()
     {
-        Order = new();
+        Order = new Order();
+    }
+
+    public void ReplaceOrder(Order order)
+    {
+        Order = order;
     }
 }

@@ -1,10 +1,10 @@
 ﻿<div class="cart-item">
-    <a @onclick="OnRemoved" class="delete-item">X</a>
-    <div class="title"></div>
+    <a @onclick="OnRemoved" class="delete-item">x</a>
+    <div class="title">@(Pizza.Size)" @Pizza.Special.Name</div>
     <ul>
-        @foreach (var topping in Pizza.Toppings.Select(t => t.Topping))
+        @foreach (var topping in Pizza.Toppings)
         {
-            <li>+ @topping.Name</li>
+            <li>+ @topping.Topping.Name</li>
         }
     </ul>
     <div class="item-price">

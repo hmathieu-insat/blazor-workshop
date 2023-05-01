@@ -53,6 +53,6 @@ public partial class OrderDetails
     protected virtual void Dispose(bool disposing)
     {
         if (disposing)
-            _pollingCancellationToken.Cancel();
+            _pollingCancellationToken?.Cancel();
     }
 }

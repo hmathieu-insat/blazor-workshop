@@ -2,16 +2,16 @@
 {
     <p>
         <strong>
-            @pizza.Size"
+            @(pizza.Size)"
             @pizza.Special.Name
             (£@pizza.GetFormattedTotalPrice())
         </strong>
     </p>
 
     <ul>
-        @foreach (var topping in pizza.Toppings.Select(tp => tp.Topping))
+        @foreach (var topping in pizza.Toppings)
         {
-            <li>+ @topping.Name</li>
+            <li>+ @topping.Topping.Name</li>
         }
     </ul>
 }
