@@ -17,7 +17,7 @@ public class OrdersController : Controller
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<OrderWithStatus>>> GetOrders()
+    public async Task<ActionResult<List<OrderWithStatus>>> GetOrdersAsync()
     {
         var orders = await _db.Orders
                 // .Where(o => o.UserId == GetUserId())
@@ -31,7 +31,7 @@ public class OrdersController : Controller
     }
 
     [HttpGet("{orderId}")]
-    public async Task<ActionResult<OrderWithStatus>> GetOrderWithStatus(int orderId)
+    public async Task<ActionResult<OrderWithStatus>> GetOrderWithStatusAsync(int orderId)
     {
         var order = await _db.Orders
                 .Where(o => o.OrderId == orderId)
@@ -50,7 +50,7 @@ public class OrdersController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<int>> PlaceOrder(Order order)
+    public async Task<ActionResult<int>> PlaceOrderAsync(Order order)
     {
         order.CreatedTime = DateTime.Now;
         order.DeliveryLocation = new LatLong(51.5001, -0.1239);
