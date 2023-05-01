@@ -16,8 +16,8 @@ public class OrderState
     {
         ConfiguringPizza = new Pizza()
         {
-            Special = special,
-            SpecialId = special.Id,
+            Special = pizzaSpecial,
+            SpecialId = pizzaSpecial.Id,
             Size = Pizza.DefaultSize,
             Toppings = new List<PizzaTopping>(),
         };
